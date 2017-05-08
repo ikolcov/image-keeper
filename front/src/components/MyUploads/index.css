@@ -1,0 +1,10 @@
+.Uploads {
+  border-collapse: collapse;
+  width: 780px;
+}
+
+.Uploads td {
+  border: 1px solid lightgray;
+  text-align: center;
+  height: 30px;
+}

@@ -1,0 +1,34 @@
+version: "3"
+services:
+  db:
+    image: "mysql/mysql-server:5.7"
+    ports:
+      - "3306:3306"
+  mongo:
+    image: "mongo:latest"
+    ports:
+      - "27017:27017"
+  front:
+    build:
+      context: ..
+      dockerfile: ./dockerfiles/Dockerfile-front
+  lb:
+    build:
+      context: ..
+      dockerfile: ./dockerfiles/Dockerfile-lb
+  mailer:
+    build:
+      context: ..
+      dockerfile: ./dockerfiles/Dockerfile-mailer
+  resizer:
+    build:
+      context: ..
+      dockerfile: ./dockerfiles/Dockerfile-resizer
+  sso:
+    build:
+      context: ..
+      dockerfile: ./dockerfiles/Dockerfile-sso
+  storage:
+    build:
+      context: ..
+      dockerfile: ./dockerfiles/Dockerfile-storage

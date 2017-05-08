@@ -1,0 +1,46 @@
+{
+  "name": "image-keeper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "docker-compose -f ./dockerfiles/docker-compose.yml up",
+    "dev": "net start MongoDB && pm2 start ecosystem.config.js",
+    "dev:stop": "net stop MongoDB && pm2 delete all",
+    "lint-staged": "lint-staged"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-config-prettier": "^1.7.0",
+    "eslint-plugin-flowtype": "^2.32.1",
+    "eslint-plugin-import": "^2.2.0",
+    "flow-bin": "^0.45.0",
+    "lint-staged": "^3.4.1",
+    "pre-commit": "^1.2.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ],
+    "extends": [
+      "airbnb-base",
+      "prettier",
+      "plugin:flowtype/recommended"
+    ],
+    "rules": {
+      "flowtype/no-types-missing-file-annotation": "off"
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": "eslint"
+  }
+}

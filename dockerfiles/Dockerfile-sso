@@ -1,0 +1,11 @@
+FROM node:7-alpine
+
+WORKDIR /srv/app
+
+COPY ./sso/package.json /srv/app
+COPY ./sso/yarn.lock /srv/app
+RUN yarn install
+
+COPY ./sso /srv/app
+
+CMD yarn start

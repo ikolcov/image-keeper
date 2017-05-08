@@ -1,0 +1,49 @@
+{
+  "name": "lb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env DEBUG=app*,http* nodemon --use_strict dev.js",
+    "debug": "cross-env DEBUG=app*,http* nodemon --inspect dev.js",
+    "start": "rimraf ./dist && babel -d ./dist ./src -s && node dist/main.js"
+  },
+  "dependencies": {
+    "async-busboy": "^0.4.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "cross-env": "^4.0.0",
+    "debug": "^2.6.6",
+    "form-data": "^2.1.4",
+    "jsonwebtoken": "^7.4.0",
+    "node-fetch": "^1.6.3",
+    "rc": "^1.2.1",
+    "rimraf": "^2.6.1",
+    "ws": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-plugin-tcomb": "^0.3.25",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-register": "^6.24.1",
+    "nodemon": "^1.11.0",
+    "tcomb": "^3.2.20"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "syntax-flow",
+      "tcomb",
+      "transform-flow-strip-types"
+    ]
+  }
+}

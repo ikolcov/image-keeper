@@ -1,0 +1,76 @@
+{
+  "name": "sso",
+  "version": "1.0.0",
+  "main": "dev.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env DEBUG=app*,http* nodemon --use_strict dev.js",
+    "debug": "cross-env DEBUG=app*,http* nodemon --inspect dev.js",
+    "start": "rimraf ./dist && babel -d ./dist ./src -s && node dist/main.js",
+    "test": "cross-env DEBUG=app*,http* ava --verbose",
+    "coverage": "nyc -r html ava"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "bcryptjs": "^2.4.3",
+    "cross-env": "^4.0.0",
+    "debug": "^2.6.4",
+    "jsonwebtoken": "^7.3.0",
+    "koa": "^2.2.0",
+    "koa-json-body": "^5.3.0",
+    "koa-route": "^3.2.0",
+    "koa2-cors": "^2.0.3",
+    "mysql": "^2.13.0",
+    "rc": "^1.2.1",
+    "rimraf": "^2.6.1",
+    "sequelize": "^3.30.4",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "babel-plugin-tcomb": "^0.3.25",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-register": "^6.24.1",
+    "nodemon": "^1.11.0",
+    "nyc": "^10.2.0",
+    "sinon": "^2.1.0",
+    "supertest": "^3.0.0",
+    "tcomb": "^3.2.20"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "source": [
+      "src/**/*.js"
+    ],
+    "concurrency": 5,
+    "failFast": true,
+    "powerAssert": true,
+    "require": [
+      "babel-register",
+      "./test/lib/env"
+    ],
+    "babel": "inherit"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "syntax-flow",
+      "tcomb",
+      "transform-flow-strip-types"
+    ]
+  }
+}

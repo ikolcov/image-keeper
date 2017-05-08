@@ -1,0 +1,9 @@
+[ignore]
+./sso/node_modules/bcryptjs/src/bower.json
+
+[include]
+./types
+
+[libs]
+
+[options]

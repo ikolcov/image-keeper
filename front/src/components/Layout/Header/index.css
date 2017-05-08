@@ -1,0 +1,30 @@
+.Menu {
+  background-color: aliceblue;
+  margin: 0;
+  padding: 2px;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Menu__element {
+  display: inline-flex;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  outline: 1px solid lightgray;
+}
+.Menu__element:hover {
+  background-color: ivory;
+  color: gray;
+}
+
+.Link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.Link--active {
+  color: blue;
+  cursor: default;
+}

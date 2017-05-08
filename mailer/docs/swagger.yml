@@ -1,0 +1,73 @@
+swagger: '2.0'
+info:
+  description: |
+    Mailer API
+  version: 1.0.0
+  title: myImageKeeper
+  contact:
+    name: ikolcov@yandex.ru
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+host: 'localhost:3000'
+basePath: /
+schemes:
+  - http
+paths:
+  /sendmail:
+    post:
+      tags:
+        - mail
+      summary: Enter email and html to send
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New letter object
+          required: true
+          schema:
+            $ref: '#/definitions/Letter'
+      security:
+        - AuthKey: []
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/SuccessResponse'
+        '400':
+          description: invalid request body
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: invalid auth key
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+securityDefinitions:
+  AuthKey:
+    type: apiKey
+    name: SendMailAuthorizationKey
+    in: header
+definitions:
+  Letter:
+    type: object
+    properties:
+      to:
+        type: string
+      html:
+        type: string
+  ErrorResponse:
+    type: object
+    properties:
+      status:
+        type: string
+      message:
+        type: string
+  SuccessResponse:
+    type: object
+    properties:
+      status:
+        type: string

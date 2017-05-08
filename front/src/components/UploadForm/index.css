@@ -1,0 +1,20 @@
+.UploadForm__file {
+  display: block;
+  margin-bottom: 10px;
+  padding: 3px 0;
+  background-color: aliceblue;
+}
+
+.UploadForm__button {
+  display: block;
+  margin: 10px 0;
+}
+
+.UploadForm__params {
+  display: inline-block;
+  width: 60px;
+  height: 20px;
+  padding: 5px;
+  margin-right: 5px;
+  text-align: center;
+}
