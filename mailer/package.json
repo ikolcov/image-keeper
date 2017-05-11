@@ -29,7 +29,6 @@
     "babel-plugin-tcomb": "^0.3.25",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-register": "^6.24.1",
-    "dotenv": "^4.0.0",
     "nodemon": "^1.11.0",
     "nyc": "^10.2.0",
     "sinon": "^2.1.0",

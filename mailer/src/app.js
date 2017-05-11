@@ -1,6 +1,5 @@
 // @flow
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'dotenv/config';
+
 import Koa from 'koa';
 import type App, { Middleware } from 'koa';
 import body from 'koa-json-body';

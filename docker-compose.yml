@@ -1,0 +1,48 @@
+version: "3"
+services:
+  db:
+    image: "mysql/mysql-server:5.7"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+  mongo:
+    image: "mongo:latest"
+    ports:
+      - "27017:27017"
+  front:
+    build:
+      context: ./front
+    ports:
+      - "2000:2000"
+  lb:
+    build:
+      context: ./lb
+    ports:
+      - "3000:3000"
+  mailer:
+    build:
+      context: ./mailer
+      args:
+        AUTH_USER: ${MAIL_TRANSPORT_AUTH_USER}
+        AUTH_PASS: ${MAIL_TRANSPORT_AUTH_PASS}
+    ports:
+      - "4000:4000"
+  resizer:
+    build:
+      context: ./resizer
+    ports:
+      - "5000:5000"
+  sso:
+    build:
+      context: ./sso
+    ports:
+      - "1000:1000"
+  storage:
+    build:
+      context: ./storage
+    ports:
+      - "500:500"

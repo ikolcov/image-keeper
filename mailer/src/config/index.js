@@ -2,12 +2,12 @@ import rc from 'rc';
 
 export default rc('mailer', {
   port: '4000',
-  authKey: 'key',
+  key: 'key',
   transport: {
     service: 'gmail',
     auth: {
-      user: 'changeMeThere@gmail.com',
-      pass: 'blablabla',
+      user: 'stub@gmail.com',
+      pass: 'stub',
     },
   },
   options: {

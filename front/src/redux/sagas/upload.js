@@ -17,7 +17,7 @@ function* upload(action) {
     form.append('user', user);
     yield call(axios, {
       method: 'post',
-      url: `http://${config.lbHost}/`,
+      url: `http://${config.hosts.lb}/`,
       data: form,
       headers: {
         Authorization: `bearer ${localStorage.getItem('accessToken')}`,
@@ -34,7 +34,7 @@ function* myUploads() {
     const user = yield select(state => state.user.profile.user);
     const { data } = yield call(axios, {
       method: 'get',
-      url: `http://${config.storageHost}/api/v1/storage/${user}`,
+      url: `http://${config.hosts.storage}/api/v1/storage/${user}`,
       headers: {
         Authorization: `bearer ${localStorage.getItem('accessToken')}`,
       },
@@ -50,7 +50,7 @@ function* uploadsDelete(action) {
     const user = yield select(state => state.user.profile.user);
     yield call(axios, {
       method: 'delete',
-      url: `http://${config.storageHost}/api/v1/storage/${user}/${action.filename}`,
+      url: `http://${config.hosts.storage}/api/v1/storage/${user}/${action.filename}`,
       headers: {
         Authorization: `bearer ${localStorage.getItem('accessToken')}`,
       },

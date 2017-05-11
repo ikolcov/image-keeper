@@ -80,15 +80,15 @@ export async function handleRecovery(ctx: Context & { request: { body: {| email:
   if (res) {
     const token = userService.grantRecoveryToken(res.user);
     await axios.post(
-      `http://${config.mailerHost}/api/v1/sendmail`,
+      `http://${config.hosts.mailer}/api/v1/sendmail`,
       {
         to: email,
         html: `<p>The link to recover your password is:
-       http://${config.frontHost}/recover-password/${token}</p>`,
+       http://${config.hosts.front}/recover-password/${token}</p>`,
       },
       {
         headers: {
-          sendmailauthorizationkey: config.mailerKey,
+          sendmailauthorizationkey: config.keys.mailer,
         },
       },
     );

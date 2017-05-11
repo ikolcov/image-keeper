@@ -1,5 +1,6 @@
 module.exports = require('rc')('storage', {
   port: '500',
-  dbConnection: 'mongodb://127.0.0.1/gridfs',
-  jwtSecret: 'secret',
+  db_connection: 'mongodb://127.0.0.1/gridfs',
+  jwt_secret: 'secret',
+  front_host: 'localhost:2000',
 });

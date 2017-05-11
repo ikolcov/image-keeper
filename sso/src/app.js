@@ -5,6 +5,7 @@ import body from 'koa-json-body';
 import cors from 'koa2-cors';
 import _ from 'koa-route';
 import handleErrors from './helpers/handle-errors';
+import config from './config';
 import * as api from './api';
 
 const app: App = new Koa();
@@ -12,7 +13,7 @@ const app: App = new Koa();
 app.use((body({ limit: '10kb', fallback: true }): Middleware));
 
 function corsOrigin(ctx: Context) {
-  const allowedOrigins = ['http://localhost:2000', 'http://localhost:9000'];
+  const allowedOrigins = [`http://${config.hosts.front}`, `http://${config.hosts.swagger}`];
   if (allowedOrigins.includes(ctx.headers.origin)) return ctx.headers.origin;
   return '';
 }

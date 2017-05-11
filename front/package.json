@@ -4,12 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.1",
-    "cross-env": "^4.0.0",
     "jwt-decode": "^2.2.0",
-    "koa": "^2.2.0",
-    "koa-send": "^4.1.0",
-    "koa-static": "^3.0.0",
-    "rc": "^1.2.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
@@ -24,14 +19,14 @@
     "eslint-plugin-flowtype": "^2.32.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.10.3",
-    "flow-bin": "^0.45.0",
+    "flow-bin": "^0.46.0",
     "react-scripts": "0.9.5",
     "redux-logger": "^3.0.1",
     "stylelint-config-standard": "^16.0.0"
   },
   "scripts": {
-    "start": "cross-env PORT=2000 react-scripts start",
-    "build": "react-scripts build && node src/server/main.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

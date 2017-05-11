@@ -7,11 +7,11 @@ import config from '../src/config';
 const request = supertest(app.listen());
 const ROOT_URL = '/api/v1/sendmail';
 
-test('POST /api/v1/sendmail with correct "to", "html", and authKey returns success', async t => {
+test('POST /api/v1/sendmail with correct "to", "html", and auth key returns success', async t => {
   t.plan(1);
   await request
     .post(ROOT_URL)
-    .set('SendMailAuthorizationKey', config.authKey)
+    .set('SendMailAuthorizationKey', config.key)
     .send({ to: config.transport.auth.user, html: '<b>Hello world!<b>' })
     .expect(200)
     .expect(res => {
@@ -19,7 +19,7 @@ test('POST /api/v1/sendmail with correct "to", "html", and authKey returns succe
     });
 });
 
-test('POST /sendmail with incorrect authKey returns 403', async t => {
+test('POST /sendmail with incorrect auth key returns 403', async t => {
   t.plan(1);
   await request
     .post(ROOT_URL)
@@ -35,7 +35,7 @@ test('POST /sendmail with incorrect email as "to", returns 400', async t => {
   t.plan(1);
   await request
     .post(ROOT_URL)
-    .set('SendMailAuthorizationKey', config.authKey)
+    .set('SendMailAuthorizationKey', config.key)
     .send({ to: 'notCorrectEmail', html: '<b>Hello world!<b>' })
     .expect(400)
     .expect(res => {
@@ -47,7 +47,7 @@ test('POST /sendmail with not strings as "to" and "html", returns 400', async t 
   t.plan(5);
   await request
     .post(ROOT_URL)
-    .set('SendMailAuthorizationKey', config.authKey)
+    .set('SendMailAuthorizationKey', config.key)
     .send({ to: true, html: 123456 })
     .expect(400)
     .expect(res => {
@@ -55,7 +55,7 @@ test('POST /sendmail with not strings as "to" and "html", returns 400', async t 
     });
   await request
     .post(ROOT_URL)
-    .set('SendMailAuthorizationKey', config.authKey)
+    .set('SendMailAuthorizationKey', config.key)
     .send({ to: [], html: false })
     .expect(400)
     .expect(res => {
@@ -63,7 +63,7 @@ test('POST /sendmail with not strings as "to" and "html", returns 400', async t 
     });
   await request
     .post(ROOT_URL)
-    .set('SendMailAuthorizationKey', config.authKey)
+    .set('SendMailAuthorizationKey', config.key)
     .send({ to: { hello: 123 }, html: [123456, '568'] })
     .expect(400)
     .expect(res => {
@@ -71,7 +71,7 @@ test('POST /sendmail with not strings as "to" and "html", returns 400', async t 
     });
   await request
     .post(ROOT_URL)
-    .set('SendMailAuthorizationKey', config.authKey)
+    .set('SendMailAuthorizationKey', config.key)
     .send({ to: new Date(), html: '' })
     .expect(400)
     .expect(res => {
@@ -79,7 +79,7 @@ test('POST /sendmail with not strings as "to" and "html", returns 400', async t 
     });
   await request
     .post(ROOT_URL)
-    .set('SendMailAuthorizationKey', config.authKey)
+    .set('SendMailAuthorizationKey', config.key)
     .send({ to: new WeakMap(), html: new Map() })
     .expect(400)
     .expect(res => {

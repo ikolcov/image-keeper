@@ -4,8 +4,8 @@ import Sequelize from 'sequelize';
 import config from '../config';
 import { db as debug } from '../helpers/debugging';
 
-const client = new Sequelize(config.dbConnection, {
-  logging: JSON.parse(config.sqlLogging) ? debug : false,
+const client = new Sequelize(config.db.connection, {
+  logging: JSON.parse(config.db.logging) ? debug : false,
 });
 
 export const User = client.import('./models/user');

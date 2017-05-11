@@ -2,6 +2,9 @@ import rc from 'rc';
 
 export default rc('lb', {
   port: '3000',
-  jwtSecret: 'secret',
-  resizerKey: 'key',
+  keys: {
+    jwt: 'secret',
+    resizer: 'key',
+  },
+  front_host: 'localhost:2000',
 });

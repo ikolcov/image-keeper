@@ -6,7 +6,7 @@ let ws;
 let intervalId;
 
 export const sendAvailable = () => {
-  ws.send(JSON.stringify({ host: config.myHost, status: 'available' }));
+  ws.send(JSON.stringify({ host: `${config.hostname}:${config.port}`, status: 'available' }));
 };
 
 function start(websocketServerLocation) {

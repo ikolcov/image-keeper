@@ -5,7 +5,7 @@ import { BadRequestError, AccessDeniedError } from './helpers/custom-errors';
 import config from './config';
 
 async function handleSendMail(ctx: Context): Promise<any> {
-  if (ctx.headers.sendmailauthorizationkey !== config.authKey) {
+  if (ctx.headers.sendmailauthorizationkey !== config.key) {
     throw new AccessDeniedError();
   }
   const { to, html }: { to: string, html: string } = ctx.request.body;

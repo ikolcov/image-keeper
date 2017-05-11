@@ -30,7 +30,7 @@ class MyUploadsPage extends Component {
         error={this.props.error}
         loading={this.props.loading}
         uploadLoading={this.props.uploadLoading}
-        imagesRoot={`http://${config.storageHost}/api/v1/storage/${this.props.user}/`}
+        imagesRoot={`http://${config.hosts.storage}/api/v1/storage/${this.props.user}/`}
         handleDelete={this.handleDelete}
       />
     );

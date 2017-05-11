@@ -75,10 +75,10 @@ export const grantRecoveryToken = (username: string) => {
   const payload = {
     sub: username,
   };
-  return jwt.sign(payload, config.jwtSecret, { expiresIn: '15m' });
+  return jwt.sign(payload, config.keys.jwt, { expiresIn: '15m' });
 };
 
-export const checkRecoveryToken = (token: string) => jwt.verify(token, config.jwtSecret);
+export const checkRecoveryToken = (token: string) => jwt.verify(token, config.keys.jwt);
 
 export const grantAccessToken = (payload: {| sub: string, email: string |}) =>
-  jwt.sign(payload, config.jwtSecret, { expiresIn: '15m' });
+  jwt.sign(payload, config.keys.jwt, { expiresIn: '15m' });

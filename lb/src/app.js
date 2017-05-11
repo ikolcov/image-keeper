@@ -14,7 +14,7 @@ let resizerPromise = new Promise(ok => (resolve = ok));
 
 const server = http.createServer(async (req, res) => {
   try {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', `http://${config.front_host}`);
     res.setHeader('Access-Control-Request-Method', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST');
     res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
@@ -26,7 +26,7 @@ const server = http.createServer(async (req, res) => {
     if (req.method !== 'POST' || req.url !== '/' || !req.headers.authorization) {
       throw new BadRequestError();
     }
-    if (!jwt.verify(req.headers.authorization.split(' ')[1], config.jwtSecret)) {
+    if (!jwt.verify(req.headers.authorization.split(' ')[1], config.keys.jwt)) {
       throw new UnauthorizedError();
     }
     const { files, fields: { width, height, user } } = await asyncBusboy(req);
@@ -43,7 +43,7 @@ const server = http.createServer(async (req, res) => {
       method: 'POST',
       body: form,
       headers: {
-        resizerauthorizationkey: config.resizerKey,
+        resizerauthorizationkey: config.keys.resizer,
       },
     }).then(r => r.json());
     resizerPromise = new Promise(ok => (resolve = ok));

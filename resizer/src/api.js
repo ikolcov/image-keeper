@@ -12,10 +12,7 @@ import { BadRequestError, AccessDeniedError } from './helpers/custom-errors';
 import { sendAvailable } from './ws';
 
 export async function handleResize(ctx: Context) {
-  if (
-    !ctx.headers.resizerauthorizationkey ||
-    ctx.headers.resizerauthorizationkey !== config.authKey
-  ) {
+  if (!ctx.headers.resizerauthorizationkey || ctx.headers.resizerauthorizationkey !== config.key) {
     throw new AccessDeniedError();
   }
   const { files, fields: { width, height, user } } = await asyncBusboy(ctx.req);

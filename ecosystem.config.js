@@ -1,12 +1,6 @@
 module.exports = {
   apps: [
     {
-      name: 'front',
-      cwd: './front',
-      script: 'src/server/main.js',
-      watch: ['./build', './src'],
-    },
-    {
       name: 'lb',
       cwd: './lb',
       script: 'dev.js',
@@ -17,6 +11,10 @@ module.exports = {
       cwd: './mailer',
       script: 'dev.js',
       watch: ['./src'],
+      env: {
+        mailer_transport__auth__user: 'mustBeChanged@gmail.com',
+        mailer_transport__auth__pass: 'mustBeChangedAsWell',
+      },
     },
     {
       name: 'resizer',

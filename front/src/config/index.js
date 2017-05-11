@@ -1,8 +1,9 @@
 // @flow
 
-module.exports = require('rc')('front', {
-  port: 2000,
-  lbHost: 'localhost:3000',
-  ssoHost: 'localhost:1000',
-  storageHost: 'localhost:500',
-});
+module.exports = {
+  hosts: {
+    lb: process.env.REACT_APP_LB_HOST || 'localhost:3000',
+    sso: process.env.REACT_APP_SSO_HOST || 'localhost:1000',
+    storage: process.env.REACT_APP_STORAGE_HOST || 'localhost:500',
+  },
+};

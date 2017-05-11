@@ -8,7 +8,7 @@ import { passwordRecoverySuccess, passwordRecoveryFailure } from '../modules/rec
 import { processRecoverySuccess, processRecoveryFailure } from '../modules/process-recovery';
 import * as types from '../actiontypes';
 
-const ROOT_URL = `http://${config.ssoHost}/api/v1/auth`;
+const ROOT_URL = `http://${config.hosts.sso}/api/v1/auth`;
 
 function* signup(action) {
   try {
