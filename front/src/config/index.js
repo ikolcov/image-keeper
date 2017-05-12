@@ -1,6 +1,6 @@
 // @flow
 
-module.exports = {
+export default {
   hosts: {
     lb: process.env.REACT_APP_LB_HOST || 'localhost:3000',
     sso: process.env.REACT_APP_SSO_HOST || 'localhost:1000',
